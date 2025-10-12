@@ -27,20 +27,20 @@ dnf5 -y copr enable hazel-bunny/ricing
 dnf5 -y install --refresh kwin-effects-forceblur
 dnf5 -y copr disable hazel-bunny/ricing
 
-dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_42/home:luisbocanegra.repo
-dnf5 -y install kde-material-you-colors
-
-dnf5 -y copr enable neilalexander/yggdrasil-go
-dnf5 -y install yggdrasil
-dnf5 -y copr disable neilalexander/yggdrasil-go
-
 dnf5 -y copr enable matinlotfali/KDE-Rounded-Corners
 dnf5 -y install kwin-effect-roundcorners
 dnf5 -y copr disable matinlotfali/KDE-Rounded-Corners
 
-dnf5 -y copr enable yalter/niri
-dnf5 -y install niri
-dnf5 -y copr disable yalter/niri
+dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_42/home:luisbocanegra.repo
+dnf5 -y install kde-material-you-colors
+
+# dnf5 -y copr enable neilalexander/yggdrasil-go
+# dnf5 -y install yggdrasil
+# dnf5 -y copr disable neilalexander/yggdrasil-go
+
+# dnf5 -y copr enable yalter/niri
+# dnf5 -y install niri
+# dnf5 -y copr disable yalter/niri
 
 #### Example for enabling a System Unit File
 
