@@ -35,6 +35,6 @@ dnf5 -y install kde-material-you-colors
 systemctl enable podman.socket
 setcap "cap_dac_override+p" $(which espanso)
 # Register espanso as a systemd service (required only once)
-espanso service register
+# espanso service register
 
 kde-material-you-colors -a
