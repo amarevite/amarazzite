@@ -12,6 +12,10 @@ set -ouex pipefail
 # this installs a package from fedora repos
 dnf5 install -y tmux 
 
+dnf5 config-manager setopt terra.enabled=1
+dnf5 install -y espanso-wayland
+dnf5 config-manager setopt terra.enabled=0
+
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
@@ -19,6 +23,18 @@ dnf5 install -y tmux
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
+dnf5 -y copr enable hazel-bunny/ricing
+dnf5 -y install --refresh kwin-effects-forceblur
+dnf5 -y copr disable hazel-bunny/ricing
+
+dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_42/home:luisbocanegra.repo
+dnf5 -y install kde-material-you-colors
+
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+setcap "cap_dac_override+p" $(which espanso)
+# Register espanso as a systemd service (required only once)
+espanso service register
+
+kde-material-you-colors -a
