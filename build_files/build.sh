@@ -37,4 +37,4 @@ setcap "cap_dac_override+p" $(which espanso)
 # Register espanso as a systemd service (required only once)
 # espanso service register
 
-kde-material-you-colors -a
+# kde-material-you-colors -a
