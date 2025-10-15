@@ -34,9 +34,9 @@ dnf5 -y copr disable matinlotfali/KDE-Rounded-Corners
 dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_42/home:luisbocanegra.repo
 dnf5 -y install kde-material-you-colors
 
-# dnf5 -y copr enable neilalexander/yggdrasil-go
-# dnf5 -y install yggdrasil
-# dnf5 -y copr disable neilalexander/yggdrasil-go
+dnf5 -y copr enable neilalexander/yggdrasil-go
+dnf5 -y install yggdrasil
+dnf5 -y copr disable neilalexander/yggdrasil-go
 
 # dnf5 -y copr enable yalter/niri
 # dnf5 -y install niri
@@ -45,4 +45,5 @@ dnf5 -y install kde-material-you-colors
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
-setcap "cap_dac_override+p" $(which espanso)
+setcap "cap_dac_override+p" "$(which espanso)"
+yggdrasil -genconf > /etc/yggdrasil.conf
