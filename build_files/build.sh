@@ -16,12 +16,7 @@ dnf5 config-manager setopt terra.enabled=1
 dnf5 install -y espanso-wayland
 dnf5 config-manager setopt terra.enabled=0
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+# Disable COPRs so they don't end up enabled on the final image
 
 dnf5 -y copr enable hazel-bunny/ricing
 dnf5 -y install --refresh kwin-effects-forceblur
@@ -47,5 +42,3 @@ dnf5 -y copr disable neilalexander/yggdrasil-go
 systemctl enable podman.socket
 systemctl enable yggdrasil.service
 setcap "cap_dac_override+p" "$(which espanso)"
-sed -i 's/etc/var/g' /etc/systemd/system/yggdrasil.service
-touch /var/yggdrasil.conf
