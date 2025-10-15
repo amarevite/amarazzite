@@ -45,5 +45,7 @@ dnf5 -y copr disable neilalexander/yggdrasil-go
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+systemctl enable yggdrasil.service
 setcap "cap_dac_override+p" "$(which espanso)"
-yggdrasil -genconf > /etc/yggdrasil.conf
+sed -i 's/etc/var/g' /etc/systemd/system/yggdrasil.service
+touch /var/yggdrasil.conf
