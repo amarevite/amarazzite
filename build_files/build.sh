@@ -41,4 +41,5 @@ dnf5 -y copr disable neilalexander/yggdrasil-go
 
 systemctl enable podman.socket
 systemctl enable yggdrasil.service
+groupadd --system yggdrasil
 setcap "cap_dac_override+p" "$(which espanso)"
