@@ -37,9 +37,12 @@ dnf5 -y copr disable neilalexander/yggdrasil-go
 # dnf5 -y install niri
 # dnf5 -y copr disable yalter/niri
 
+brew install ccat dua-cli lazygit micro mpv ripgrep-all
+
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
 systemctl enable yggdrasil.service
-groupadd --system yggdrasil
+cp add-yggdrasil-group-oneshot.service /etc/systemd/system/add-yggdrasil-group-oneshot.service
+systemctl enable add-yggdrasil-group-oneshot.service
 setcap "cap_dac_override+p" "$(which espanso)"
