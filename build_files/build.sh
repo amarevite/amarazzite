@@ -38,8 +38,8 @@ dnf5 -y copr disable neilalexander/yggdrasil-go
 # dnf5 -y copr disable yalter/niri
 
 dnf5 -y install intel-compute-runtime
-# dnf5 -y install intel-level-zero-gpu
-# dnf5 -y install intel-opencl
+dnf5 -y install intel-level-zero
+dnf5 -y install intel-level-zero-gpu-raytracing
 
 # echo "import \"/usr/share/ublue-os/just/00-install-personal-defaults.just\"" >> /usr/share/ublue-os/justfile
 
