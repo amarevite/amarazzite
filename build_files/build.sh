@@ -38,12 +38,10 @@ dnf5 -y copr disable neilalexander/yggdrasil-go
 # dnf5 -y copr disable yalter/niri
 
 dnf5 -y install intel-compute-runtime
-dnf5 -y install intel-oneapi-base-toolkit
-dnf5 -y install intel-oneapi-hpc-toolkit
 # dnf5 -y install intel-level-zero-gpu
 # dnf5 -y install intel-opencl
 
-# echo "import \"/usr/share/ublue-os/just/00-install-personal-defaults.just \"" >> /usr/share/ublue-os/justfile
+# echo "import \"/usr/share/ublue-os/just/00-install-personal-defaults.just\"" >> /usr/share/ublue-os/justfile
 
 #### Example for enabling a System Unit File
 

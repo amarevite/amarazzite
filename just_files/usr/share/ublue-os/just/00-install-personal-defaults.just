@@ -1,3 +1,6 @@
-#!/usr/bin/bash
+# vim: set ft=make :
 
-brew install ccat dua-cli lazygit micro mpv ripgrep-all
+# Brew install my personal defaults
+install-personal-defaults:
+    #!/usr/bin/bash
+    brew install ccat dua-cli lazygit micro mpv ripgrep-all
