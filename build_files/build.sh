@@ -33,19 +33,13 @@ dnf5 -y copr enable neilalexander/yggdrasil-go
 dnf5 -y install yggdrasil
 dnf5 -y copr disable neilalexander/yggdrasil-go
 
-# dnf5 -y copr enable yalter/niri
-# dnf5 -y install niri
-# dnf5 -y copr disable yalter/niri
-
 dnf5 -y install intel-compute-runtime
-dnf5 -y install intel-level-zero
 dnf5 -y install intel-level-zero-gpu-raytracing
-
-# echo "import \"/usr/share/ublue-os/just/00-install-personal-defaults.just\"" >> /usr/share/ublue-os/justfile
+dnf5 -y install embree
 
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
 # systemctl enable yggdrasil.service
-setcap "cap_dac_override+p" "$(which espanso)"
 # cat /usr/lib/sysusers.d/yggdrasil.conf
+setcap "cap_dac_override+p" "$(which espanso)"
