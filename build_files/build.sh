@@ -37,12 +37,15 @@ dnf5 -y copr disable neilalexander/yggdrasil-go
 # dnf5 -y install niri
 # dnf5 -y copr disable yalter/niri
 
-brew install ccat dua-cli lazygit micro mpv ripgrep-all
+dnf5 -y install intel-compute-runtime
+# dnf5 -y install intel-level-zero-gpu
+# dnf5 -y install intel-opencl
+
+# echo "import \"/usr/share/ublue-os/just/00-install-personal-defaults.just \"" >> /usr/share/ublue-os/justfile
 
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
-systemctl enable yggdrasil.service
-cp add-yggdrasil-group-oneshot.service /etc/systemd/system/add-yggdrasil-group-oneshot.service
-systemctl enable add-yggdrasil-group-oneshot.service
+# systemctl enable yggdrasil.service
 setcap "cap_dac_override+p" "$(which espanso)"
+# cat /usr/lib/sysusers.d/yggdrasil.conf
