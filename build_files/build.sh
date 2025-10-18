@@ -38,6 +38,8 @@ dnf5 -y copr disable neilalexander/yggdrasil-go
 # dnf5 -y copr disable yalter/niri
 
 dnf5 -y install intel-compute-runtime
+dnf5 -y install intel-oneapi-base-toolkit
+dnf5 -y install intel-oneapi-hpc-toolkit
 # dnf5 -y install intel-level-zero-gpu
 # dnf5 -y install intel-opencl
 

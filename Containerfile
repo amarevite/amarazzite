@@ -24,7 +24,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    echo "import \"/usr/share/ublue-os/just/00-install-personal-defaults.just \"" >> /usr/share/ublue-os/justfile && \
+    echo "import \"/usr/share/ublue-os/just/00-install-personal-defaults.just\"" >> /usr/share/ublue-os/justfile && \
     /ctx/build.sh
     
 ### LINTING
