@@ -5,3 +5,11 @@ install-personal-defaults:
     #!/usr/bin/bash
     HOMEBREW_NO_ENV_HINTS=1 \
     brew install ccat dua-cli lazygit micro mpv oxipng ripgrep-all
+
+# Finish setting up yggdrasil network
+setup-yggdrasil:
+    #!/usr/bin/bash
+    groupadd --system yggdrasil
+    systemctl start yggdrasil-default-config.service
+    systemctl enable yggdrasil.service
+    systemctl start yggdrasil.service

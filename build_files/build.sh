@@ -40,6 +40,4 @@ dnf5 -y install embree
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
-# systemctl enable yggdrasil.service
-# cat /usr/lib/sysusers.d/yggdrasil.conf
 setcap "cap_dac_override+p" "$(which espanso)"
