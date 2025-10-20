@@ -9,7 +9,7 @@ install-personal-defaults:
 # Finish setting up yggdrasil network
 setup-yggdrasil:
     #!/usr/bin/bash
-    groupadd --system yggdrasil
+    sudo groupadd --system yggdrasil
     systemctl start yggdrasil-default-config.service
     systemctl enable yggdrasil.service
     systemctl start yggdrasil.service
