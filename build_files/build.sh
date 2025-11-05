@@ -25,8 +25,8 @@ dnf5 -y copr disable hazel-bunny/ricing
 dnf5 -y copr enable matinlotfali/KDE-Rounded-Corners
 dnf5 -y install kwin-effect-roundcorners
 dnf5 -y copr disable matinlotfali/KDE-Rounded-Corners
-
-dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_42/home:luisbocanegra.repo
+ 
+dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_43/home:luisbocanegra.repo
 dnf5 -y install kde-material-you-colors
 
 dnf5 -y copr enable neilalexander/yggdrasil-go
