@@ -18,9 +18,10 @@ dnf5 config-manager setopt terra.enabled=0
 
 # Disable COPRs so they don't end up enabled on the final image
 
-dnf5 -y copr enable hazel-bunny/ricing
-dnf5 -y install --refresh kwin-effects-forceblur
-dnf5 -y copr disable hazel-bunny/ricing
+# dnf5 -y copr enable hazel-bunny/ricing
+# dnf5 -y install --refresh kwin-effects-forceblur
+# dnf5 -y copr disable hazel-bunny/ricing
+dnf5 -y install /ctx/kwin-glass.rpm
 
 dnf5 -y copr enable matinlotfali/KDE-Rounded-Corners
 dnf5 -y install kwin-effect-roundcorners
