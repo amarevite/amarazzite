@@ -9,18 +9,12 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
-dnf5 install -y tmux
+# Disable COPRs so they don't end up enabled on the final image
 
 dnf5 config-manager setopt terra.enabled=1
 dnf5 install -y espanso-wayland
 dnf5 config-manager setopt terra.enabled=0
 
-# Disable COPRs so they don't end up enabled on the final image
-
-# dnf5 -y copr enable hazel-bunny/ricing
-# dnf5 -y install --refresh kwin-effects-forceblur
-# dnf5 -y copr disable hazel-bunny/ricing
 dnf5 -y install /ctx/kwin-glass.rpm
 
 dnf5 -y copr enable matinlotfali/KDE-Rounded-Corners

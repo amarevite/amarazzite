@@ -14,11 +14,6 @@ RUN dnf5 -y install git cmake extra-cmake-modules gcc-g++ \
                     rpm-build
 
 WORKDIR /glass
-# RUN git clone https://github.com/4v3ngR/kwin-effects-glass
-# WORKDIR /glass/kwin-effects-glass/build
-# RUN cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-# RUN make -j$(nproc)
-# RUN cpack -V -G RPM
 
 RUN git clone https://github.com/4v3ngR/kwin-effects-glass \
     && cd kwin-effects-glass \
