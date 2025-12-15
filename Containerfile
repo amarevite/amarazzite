@@ -1,5 +1,6 @@
 # Build Glass effect: https://github.com/4v3ngR/kwin-effects-glass
-FROM fedora:latest AS build-glass
+# FROM fedora:latest AS build-glass
+FROM ghcr.io/ublue-os/bazzite:stable AS build-glass
 RUN dnf5 -y install git cmake extra-cmake-modules gcc-g++ \
                     kf6-kwindowsystem-devel plasma-workspace-devel \
                     libplasma-devel qt6-qtbase-private-devel qt6-qtbase-devel \
