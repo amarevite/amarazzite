@@ -6,7 +6,7 @@ install-personal-defaults:
   HOMEBREW_NO_ENV_HINTS=1
 
   brew install \
-    ab-av1 aria2c bottom ccat ddrescue doggo dua-cli hugo lazygit micro \
+    ab-av1 aria2 bottom ccat ddrescue doggo dua-cli hugo lazygit micro \
     oxipng andoc podlet podman-compose ripgrep-all silicon xh yt-dlp
     # fraluc06/ffmpeg-svt-av1-essential
 
@@ -33,7 +33,7 @@ setup-yggdrasil:
 # Set up Maia NFS share as Astradora
 setup-maia-nfs:
   #!/usr/bin/bash
-  sudo cat > /etc/systemd/system/var-mnt-Astradora.mount <<CONTENT
+  sudo bash -c 'cat >/etc/systemd/system/var-mnt-Astradora.mount <<CONTENT
   [Unit]
   Description=Maia NFS network share (mounted as Astradora)
   
@@ -42,10 +42,12 @@ setup-maia-nfs:
   Where=/var/mnt/Astradora
   Type=nfs4
   # Options=rw,user,noexec,noauto,x-systemd.automount,x-mount.mkdir,gid=1000,uid=1000,x-gvfs-name=Astradora
+  Options=x-mount.mkdir,x-gvfs-name=Astradora
   
   [Install]
   WantedBy=multi-user.target
-  CONTENT
+  CONTENT'
 
-  systemctl start var-mnt-Astradora.mount
-  systemctl enable var-mnt-Astradora.mount
+  sudo systemctl daemon-reload
+  sudo systemctl start var-mnt-Astradora.mount
+  sudo systemctl enable var-mnt-Astradora.mount
