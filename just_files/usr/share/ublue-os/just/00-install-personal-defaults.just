@@ -51,3 +51,43 @@ setup-maia-nfs:
   sudo systemctl daemon-reload
   sudo systemctl start var-mnt-Astradora.mount
   sudo systemctl enable var-mnt-Astradora.mount
+
+# Fix user flatpak overrides
+fix-user-flatpak-overrides:
+  #!/usr/bin/bash
+
+  printf '\033[1;34m[INFO]\033[0m ' # https://stackoverflow.com/a/28938235
+  printf 'To fix --user flatpaks not theming correctly, run: \033[4;36m'
+  echo 'flatpak override --user --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtk-4.0:ro'
+  printf '\033[0m\n'
+
+  printf '\033[1;34m[LOG]\033[0m Checking if \033[4;36m'
+  printf '~/.local/share/flatpak/overrides/global\033[0m '
+  echo 'exists.'
+  if [ ! -f ~/.local/share/flatpak/overrides/global ]; then
+    printf '\033[1;34m[INFO]\033[0m '
+    echo "File does not exist. Automatically copying over."
+    printf '\033[1;34m[LOG]\033[0m Running \033[4;36m'
+    echo 'cat /var/lib/flatpak/overrides/global | tee ~/.local/share/flatpak/overrides/global'
+    printf '\033[0m'
+    cat /var/lib/flatpak/overrides/global | tee ~/.local/share/flatpak/overrides/global
+    printf '\033[1;34m[INFO]\033[0m '
+    echo "Done."
+    exit 0
+  fi
+
+  printf '\033[1;34m[LOG]\033[0m Running \033[4;36m'
+  echo 'diff --color /var/lib/flatpak/overrides/global ~/.local/share/flatpak/overrides/global'
+  printf '\033[0m\n'
+
+  diff --color /var/lib/flatpak/overrides/global ~/.local/share/flatpak/overrides/global
+  if [[ $? == 0 ]]; then
+    printf '\033[1;34m[INFO]\033[0m '
+    echo "Files are already identical. Nothing to do."
+
+  elif [[ $? == 1 ]]; then
+    printf '\033[1;33m[WRN]\033[0m '
+    echo "Files differ. Manually fix."
+
+  else printf '\033[1;91m[ERR]\033[0;31m UNKNOWN ERROR\033[0m\n'
+  fi
