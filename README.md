@@ -1,3 +1,47 @@
+# amarazzite
+
+This is my custom Bazzite build. 
+
+[Build script](build_files/build.sh) installs some programs I want:
+```diff
+# Look pretty
++ kwin-effects-glass        # https://github.com/4v3ngR/kwin-effects-glass
++ kwin-effect-roundcorners  # https://github.com/matinlotfali/KDE-Rounded-Corners
++ kde-material-you-colors   # https://github.com/luisbocanegra/kde-material-you-colors
+
+# Blender GPU oneAPI support
++ intel-compute-runtime
++ intel-level-zero-gpu-raytracing
++ embree
+
+# Terminal preference
++ ptyxis
+- konsole
+
+# Miscellaneous
++ espanso-wayland
++ yggdrasil
++ earlyoom
+```
+
+[Justfile](just_files/usr/share/ublue-os/just/00-install-personal-defaults.just)
+```diff
++ install-personal-defaults   # install various programs (via brew)
++ install-svt-av1-essential   # replace ffmpeg/svtav1 with an optimized version (via brew)
++ setup-yggdrasil             # add self to yggdrasil group, enable/start yggdrasil service
++ setup-maia-nfs              # attach to network storage
++ fix-user-flatpak-overrides  # match flatpak --user global overrides to the --system global overrides
+```
+
+[Containerfile](Containerfile)
+- build `kwin-effects-glass`
+- import `00-install-personal-defaults.just`
+
+
+
+# Old Template Readme
+<details> <summary>Collapsed</summary>
+
 # image-template
 
 This repository is meant to be a template for building your own custom [bootc](https://github.com/bootc-dev/bootc) image. This template is the recommended way to make customizations to any image published by the Universal Blue Project.
@@ -258,3 +302,5 @@ These are images derived from this template (or similar enough to this template)
 - [Homer](https://github.com/bketelsen/homer/)
 - [Amy OS](https://github.com/astrovm/amyos)
 - [VeneOS](https://github.com/Venefilyn/veneos)
+
+</details>
