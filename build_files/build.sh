@@ -43,3 +43,7 @@ dnf5 -y remove konsole
 systemctl enable podman.socket
 systemctl enable earlyoom.service
 setcap "cap_dac_override+p" "$(which espanso)"
+
+
+# fix intel compute runtime https://github.com/intel/compute-runtime/issues/922#issuecomment-4675326568
+ldconfig
