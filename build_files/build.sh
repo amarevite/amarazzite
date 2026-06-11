@@ -11,8 +11,13 @@ set -ouex pipefail
 
 # Disable COPRs so they don't end up enabled on the final image
 
+OS_VERSION=$(grep --perl-regexp --only-matching 'VERSION_ID=\K[\d]+' /etc/os-release)
+echo "OS_VERSION: $OS_VERSION"
+
+dnf5 -y upgrade --refresh --releasever="$OS_VERSION"
+
 dnf5 config-manager setopt terra.enabled=1
-dnf5 install -y espanso-wayland
+dnf5 -y install espanso-wayland
 dnf5 config-manager setopt terra.enabled=0
 
 dnf5 -y install /ctx/kwin-glass.rpm
@@ -21,8 +26,7 @@ dnf5 -y copr enable matinlotfali/KDE-Rounded-Corners
 dnf5 -y install kwin-effect-roundcorners
 dnf5 -y copr disable matinlotfali/KDE-Rounded-Corners
 
-OS_VERSION=$(grep --perl-regexp --only-matching 'VERSION_ID=\K[\d]+' /etc/os-release)
-dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_$OS_VERSION/home:luisbocanegra.repo
+dnf5 -y config-manager addrepo --from-repofile="https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_$OS_VERSION/home:luisbocanegra.repo"
 dnf5 -y install kde-material-you-colors --allowerasing
 dnf5 -y config-manager setopt home_luisbocanegra.enabled=0
 
