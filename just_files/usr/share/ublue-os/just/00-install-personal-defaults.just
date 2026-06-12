@@ -1,5 +1,10 @@
 # vim: set ft=make :
 
+# install kde-material-you-colors
+install-kde-material-you-colors:
+  #!/usr/bin/bash
+  pip install --user --upgrade kde-material-you-colors pywal16
+
 # Brew install my personal defaults
 install-personal-defaults:
   #!/usr/bin/bash
