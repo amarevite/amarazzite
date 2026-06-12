@@ -26,11 +26,12 @@ This is my custom Bazzite build.
 
 [Justfile](just_files/usr/share/ublue-os/just/00-install-personal-defaults.just)
 ```diff
-+ install-personal-defaults   # install various programs (via brew)
-+ install-svt-av1-essential   # replace ffmpeg/svtav1 with an optimized version (via brew)
-+ setup-yggdrasil             # add self to yggdrasil group, enable/start yggdrasil service
-+ setup-maia-nfs              # attach to network storage
-+ fix-user-flatpak-overrides  # match flatpak --user global overrides to the --system global overrides
++ install-kde-material-you-colors   # install kde-material-you-colors and pywal16 in userspace
++ install-personal-defaults         # install various programs (via brew)
++ install-svt-av1-essential         # replace ffmpeg/svtav1 with an optimized version (via brew)
++ setup-yggdrasil                   # add self to yggdrasil group, enable/start yggdrasil service
++ setup-maia-nfs                    # attach to network storage
++ fix-user-flatpak-overrides        # match flatpak --user global overrides to the --system global overrides
 ```
 
 [Containerfile](Containerfile)
