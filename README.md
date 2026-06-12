@@ -7,7 +7,7 @@ This is my custom Bazzite build.
 # Look pretty
 + kwin-effects-glass        # https://github.com/4v3ngR/kwin-effects-glass
 + kwin-effect-roundcorners  # https://github.com/matinlotfali/KDE-Rounded-Corners
-+ kde-material-you-colors   # https://github.com/luisbocanegra/kde-material-you-colors
++ kvantum
 
 # Blender GPU oneAPI support
 + intel-compute-runtime
@@ -26,7 +26,7 @@ This is my custom Bazzite build.
 
 [Justfile](just_files/usr/share/ublue-os/just/00-install-personal-defaults.just)
 ```diff
-+ install-kde-material-you-colors   # install kde-material-you-colors and pywal16 in userspace
++ install-kde-material-you-colors   # install kde-material-you-colors and pywal16 in userspace (https://github.com/luisbocanegra/kde-material-you-colors)
 + install-personal-defaults         # install various programs (via brew)
 + install-svt-av1-essential         # replace ffmpeg/svtav1 with an optimized version (via brew)
 + setup-yggdrasil                   # add self to yggdrasil group, enable/start yggdrasil service

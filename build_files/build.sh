@@ -39,6 +39,8 @@ dnf5 -y install intel-level-zero-gpu-raytracing
 dnf5 -y install embree
 
 dnf5 -y install earlyoom
+dnf5 -y install kvantum
+
 dnf5 -y install ptyxis
 dnf5 -y remove konsole
 
