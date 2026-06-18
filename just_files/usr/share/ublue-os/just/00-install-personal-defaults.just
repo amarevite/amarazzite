@@ -96,3 +96,20 @@ fix-user-flatpak-overrides:
 
   else printf '\033[1;91m[ERR]\033[0;31m UNKNOWN ERROR\033[0m\n'
   fi
+
+# setup my personal environment variables
+setup-personal-environment-variables:
+  #!/usr/bin/bash
+
+  cat >> "/home/$USER/.config/environment.d/00-amarazzite.conf" << CONFIG
+  # GSK_RENDERER=ngl
+  QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
+  HOMEBREW_NO_ENV_HINTS=1
+  HOMEBREW_NO_ASK=1
+  
+  # https://github.com/taj-ny/kwin-effects-forceblur?tab=readme-ov-file#high-cursor-latency-or-stuttering-on-wayland
+  # KWIN_DRM_NO_AMS=1
+  # KWIN_FORCE_SW_CURSOR=0
+  # KWIN_FORCE_SW_CURSOR=1
+  # https://github.com/taj-ny/kwin-effects-forceblur/issues/160
+  CONFIG
