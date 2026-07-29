@@ -12,7 +12,7 @@ install-personal-defaults:
 
   brew install \
     ab-av1 aria2 bottom ccat ddrescue doggo dua-cli hugo lazygit micro \
-    oxipng andoc podlet podman-compose ripgrep-all silicon xh yt-dlp
+    oxipng andoc podlet ripgrep-all silicon xh yt-dlp
     # fraluc06/ffmpeg-svt-av1-essential
 
 # Brew install svt-av1-essential
