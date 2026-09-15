@@ -34,6 +34,7 @@ This is my custom Bazzite build.
 + fix-user-flatpak-overrides            # match flatpak --user global overrides to the --system global overrides
 + setup-personal-environment-variables  # setup my personal environment variables
 + setup-personal-udev-rules:            # setup udev 8bitdo / soomfon
++ install-fixed-fluent-round            # https://github.com/vinceliuice/Fluent-kde/issues/56
 ```
 
 [Containerfile](Containerfile)
