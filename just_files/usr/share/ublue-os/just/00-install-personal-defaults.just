@@ -112,12 +112,15 @@ setup-personal-environment-variables:
   # KWIN_FORCE_SW_CURSOR=0
   # KWIN_FORCE_SW_CURSOR=1
   # https://github.com/taj-ny/kwin-effects-forceblur/issues/160
+
+  XDG_CONFIG_HOME="$HOME/.config"
   CONFIG
 
 # setup udev 8bitdo / soomfon
 setup-personal-udev-rules:
   #!/usr/bin/bash
 
+  # https://github.com/fabiscafe/game-devices-udev
   echo "/etc/udev/rules.d/8bitdo-gdu.rules"
   sudo dd of="/etc/udev/rules.d/8bitdo-gdu.rules" << 8BITDO
   # 8BitDo Generic Device
@@ -203,6 +206,7 @@ setup-personal-udev-rules:
   8BITDO
 
 
+  # https://github.com/4ndv/opendeck-akp153
   echo ""
   echo "/etc/udev/rules.d/40-opendeck-akp153.rules"
   sudo dd of="/etc/udev/rules.d/40-opendeck-akp153.rules" << OPENDECK
@@ -238,4 +242,14 @@ setup-personal-udev-rules:
   OPENDECK
 
   echo ""
+  echo "Reloading udev rules"
+  sudo udevadm control --reload-rules
+  sudo udevadm trigger
   echo "Done"
+
+# install fixed fluent-round  # https://github.com/vinceliuice/Fluent-kde/issues/56
+install-fixed-fluent-round:
+  #!/usr/bin/fish
+  set TEMPDIR (mktemp --directory)
+  git clone --depth 1 --branch fix/duplicate-stylesheet-blocks https://github.com/tomeyerman/Fluent-kde.git $TEMPDIR
+  cp --recursive $TEMPDIR/plasma/desktoptheme/Fluent-round $HOME/.local/share/plasma/desktoptheme/
