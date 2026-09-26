@@ -57,6 +57,30 @@ setup-maia-nfs:
   sudo systemctl start var-mnt-Astradora.mount
   sudo systemctl enable var-mnt-Astradora.mount
 
+# Set up 2TB Games Please
+setup-games-please:
+  #!/usr/bin/bash
+  GAMESPLEASE=$(systemd-escape --path --suffix=mount "/var/mnt/Games Please")
+  GAMESPLEASE_FILEPATH=/etc/systemd/system/$GAMESPLEASE
+
+  sudo bash -c "cat >'/etc/systemd/system/$GAMESPLEASE' <<CONTENT
+  [Unit]
+  Description=Games Please (2TB WD-WXB2A613ADY4)
+  
+  [Mount]
+  What=UUID=574b2aaa-145e-46b6-9809-13eed66d9160
+  Where=/var/mnt/Games Please
+  Type=ext4
+  Options=x-mount.mkdir,x-gvfs-name=Games Please
+  
+  [Install]
+  WantedBy=multi-user.target
+  CONTENT"
+
+  sudo systemctl daemon-reload
+  sudo systemctl start $GAMESPLEASE
+  sudo systemctl enable $GAMESPLEASE
+
 # Fix user flatpak overrides
 fix-user-flatpak-overrides:
   #!/usr/bin/bash

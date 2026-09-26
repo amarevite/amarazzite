@@ -11,7 +11,8 @@ set -ouex pipefail
 
 # Disable COPRs so they don't end up enabled on the final image
 
-OS_VERSION=$(grep --perl-regexp --only-matching 'VERSION_ID=\K[\d]+' /etc/os-release)
+# OS_VERSION=$(grep --perl-regexp --only-matching 'VERSION_ID=\K[\d]+' /etc/os-release)
+OS_VERSION=$(rpm --eval '%fedora')
 echo "OS_VERSION: $OS_VERSION"
 
 dnf5 -y upgrade --refresh --releasever="$OS_VERSION"

@@ -31,6 +31,7 @@ This is my custom Bazzite build.
 + install-svt-av1-essential             # replace ffmpeg/svtav1 with an optimized version (via brew)
 + setup-yggdrasil                       # add self to yggdrasil group, enable/start yggdrasil service
 + setup-maia-nfs                        # attach to network storage
++ setup-games-please                    # mount games drive
 + fix-user-flatpak-overrides            # match flatpak --user global overrides to the --system global overrides
 + setup-personal-environment-variables  # setup my personal environment variables
 + setup-personal-udev-rules:            # setup udev 8bitdo / soomfon
