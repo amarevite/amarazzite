@@ -45,6 +45,8 @@ dnf5 -y install kvantum
 dnf5 -y install ptyxis
 dnf5 -y remove konsole
 
+dnf5 -y remove xwaylandvideobridge
+
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
