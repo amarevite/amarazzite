@@ -1,5 +1,4 @@
 # Build Glass effect: https://github.com/4v3ngR/kwin-effects-glass
-# FROM fedora:latest AS build-glass
 FROM ghcr.io/ublue-os/bazzite:stable AS build-glass
 RUN dnf5 -y install git cmake extra-cmake-modules gcc-g++ \
                     kf6-kwindowsystem-devel plasma-workspace-devel \
@@ -23,6 +22,20 @@ RUN git clone https://github.com/4v3ngR/kwin-effects-glass \
     && cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
     && make -j$(nproc) \
     && cpack -V -G RPM
+
+
+# Prepare udev rules
+FROM ghcr.io/ublue-os/bazzite:stable AS prepare-udev-rules
+RUN dnf5 -y install git
+
+WORKDIR /rules
+RUN git clone https://github.com/4ndv/opendeck-akp153.git
+RUN git clone https://codeberg.org/fabiscafe/game-devices-udev.git
+
+WORKDIR /rules/game-devices-udev/src
+RUN for each in *.rules; \
+      do mv "$each" "71-$each"; \
+    done
 
 
 # Allow build scripts to be referenced without being copied into the final image
@@ -50,11 +63,17 @@ FROM ghcr.io/ublue-os/bazzite:stable
 
 COPY just_files/ /
 
+# Copy udev rules from prepare-udev-rules stage
+COPY --from=prepare-udev-rules /rules/opendeck-akp153/40-opendeck-akp153.rules /usr/lib/udev/rules.d/
+COPY --from=prepare-udev-rules /rules/game-devices-udev/src/*.rules /usr/lib/udev/rules.d/
+
+# Add my own Justfile
+RUN echo 'import "/usr/share/ublue-os/just/00-install-personal-defaults.just"' >> /usr/share/ublue-os/justfile
+
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    echo "import \"/usr/share/ublue-os/just/00-install-personal-defaults.just\"" >> /usr/share/ublue-os/justfile && \
     /ctx/build.sh
     
 ### LINTING

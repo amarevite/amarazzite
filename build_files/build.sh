@@ -12,10 +12,10 @@ set -ouex pipefail
 # Disable COPRs so they don't end up enabled on the final image
 
 # OS_VERSION=$(grep --perl-regexp --only-matching 'VERSION_ID=\K[\d]+' /etc/os-release)
-OS_VERSION=$(rpm --eval '%fedora')
-echo "OS_VERSION: $OS_VERSION"
-
-dnf5 -y upgrade --refresh --releasever="$OS_VERSION"
+# OS_VERSION=$(rpm --eval '%fedora')
+# echo "OS_VERSION: $OS_VERSION"
+# 
+# dnf5 -y upgrade --refresh --releasever="$OS_VERSION"
 
 dnf5 config-manager setopt terra.enabled=1
 dnf5 -y install espanso-wayland
@@ -26,10 +26,6 @@ dnf5 -y install /ctx/kwin-glass.rpm
 dnf5 -y copr enable matinlotfali/KDE-Rounded-Corners
 dnf5 -y install kwin-effect-roundcorners
 dnf5 -y copr disable matinlotfali/KDE-Rounded-Corners
-
-# dnf5 -y config-manager addrepo --from-repofile="https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_$OS_VERSION/home:luisbocanegra.repo"
-# dnf5 -y install kde-material-you-colors --allowerasing
-# dnf5 -y config-manager setopt home_luisbocanegra.enabled=0
 
 dnf5 -y copr enable neilalexander/yggdrasil-go
 dnf5 -y install yggdrasil
@@ -47,12 +43,23 @@ dnf5 -y remove konsole
 
 dnf5 -y remove xwaylandvideobridge
 
-#### Example for enabling a System Unit File
 
+#### Preparation
 systemctl enable podman.socket
 systemctl enable earlyoom.service
-setcap "cap_dac_override+p" "$(which espanso)"
 
+setcap "cap_dac_override+p" "$(which espanso)"
 
 # fix intel compute runtime https://github.com/intel/compute-runtime/issues/922#issuecomment-4675326568
 ldconfig
+
+
+### Cleanup to remove `bootc container lint` warnings
+# cleanup transient files in /run and /var from installing packages
+dnf5 clean all
+rm --recursive --force /run/dnf
+rm --recursive --force /var/lib/dnf
+
+# bootc linter explicitly looks for a group definition, but it's only implied by ta user definition.
+# explicitly set a group definition to satisfy the linter. systemd-sysusers is handling everything anyway
+echo 'g yggdrasil - -' >> /usr/lib/sysusers.d/yggdrasil.conf

@@ -6,31 +6,162 @@ install-kde-material-you-colors:
   pip install --user --upgrade kde-material-you-colors pywal16
 
 # Brew install my personal defaults
-install-personal-defaults:
+install-personal-defaults ACTION="":
   #!/usr/bin/bash
-  HOMEBREW_NO_ENV_HINTS=1
+  source /usr/lib/ujust/ujust.sh
+  OPTION={{ ACTION }}
+  if [ "$OPTION" == "help" ]; then
+    echo "Usage: ujust install-personal-defaults <option>"
+    echo "  Use 'brew' to install brew packages"
+    echo "  Use 'flatpak' to install flatpak packages (via brew)"
+    echo "  Use 'both' to install both"
+    exit 0
+  elif [ "$OPTION" == "" ]; then
+    OPTION=$(Choose "brew" "flatpak" "both" )
+  fi
 
-  brew install \
-    ab-av1 aria2 bottom ccat ddrescue doggo dua-cli hugo lazygit micro \
-    oxipng andoc podlet ripgrep-all silicon xh yt-dlp
-    # fraluc06/ffmpeg-svt-av1-essential
+  if [[ "${OPTION,,}" == "brew" || "${OPTION,,}" == "both" ]]; then
+  brew bundle --file - <<BREW
+    brew "ab-av1"
+    brew "age"
+    brew "aria2"
+    brew "bottom"
+    brew "ccat"
+    brew "cmake"
+    brew "ddrescue"
+    brew "doggo"
+    brew "dua-cli"
+    brew "dysk"
+    brew "elvish"
+    brew "fclones"
+    brew "fd"
+    brew "ffmpeg"
+    brew "ffms2"
+    brew "hugo"
+    brew "ideviceinstaller"
+    brew "immich-go"
+    brew "lazygit"
+    brew "micro"
+    brew "murex"
+    brew "nim"
+    brew "oh-my-posh"
+    brew "oxipng"
+    brew "pandoc"
+    brew "podlet"
+    brew "podman-compose"
+    brew "ripgrep"
+    brew "ripgrep-all"
+    brew "rustscan"
+    brew "silicon"
+    brew "strace"
+    brew "svt-av1"
+    brew "tealdeer"
+    brew "trash-cli"
+    brew "ugrep"
+    brew "video-compare"
+    brew "xh"
+    brew "yt-dlp"
+    brew "zoxide"
+  BREW
+  fi
 
-# Brew install svt-av1-essential
-install-svt-av1-essential:
-  #!/usr/bin/bash
-  brew install fraluc06/ffmpeg-svt-av1-essential/svt-av1-essential-lib
-  brew install fraluc06/ffmpeg-svt-av1-essential/ffmpeg-custom
-  brew install fraluc06/ffmpeg-svt-av1-essential/ffms2-custom
-  brew install fraluc06/ffmpeg-svt-av1-essential/svt-av1-essential
+  if [[ "${OPTION,,}" == "flatpak" || "${OPTION,,}" == "both" ]]; then
+  brew bundle --file - <<FLATPAK
+    flatpak "ai.lmstudio.lm-studio"
+    flatpak "app.zen_browser.zen"
+    flatpak "com.bitwarden.desktop"
+    flatpak "com.chatterino.chatterino"
+    flatpak "com.dec05eba.gpu_screen_recorder"
+    flatpak "com.github.Matoking.protontricks"
+    flatpak "com.github.finefindus.eyedropper"
+    flatpak "com.github.johnfactotum.Foliate"
+    flatpak "com.github.k4zmu2a.spacecadetpinball"
+    flatpak "com.github.taiko2k.tauonmb"
+    flatpak "com.github.tchx84.Flatseal"
+    flatpak "com.github.wwmm.easyeffects"
+    flatpak "com.jaquadro.NBTExplorer"
+    flatpak "com.jeffser.Nocturne"
+    flatpak "com.makemkv.MakeMKV"
+    flatpak "com.obsproject.Studio"
+    flatpak "com.protonvpn.www"
+    flatpak "com.ranfdev.DistroShelf"
+    flatpak "com.usebottles.bottles"
+    flatpak "com.vivaldi.Vivaldi"
+    flatpak "com.vysp3r.ProtonPlus"
+    flatpak "com.yubico.yubioath"
+    flatpak "de.leopoldluley.Clapgrep"
+    flatpak "dev.ters.LocalTranslate"
+    flatpak "fr.handbrake.ghb"
+    flatpak "info.mumble.Mumble"
+    flatpak "io.github.Faugus.faugus-launcher"
+    flatpak "io.github.Foldex.AdwSteamGtk"
+    flatpak "io.github.benjamimgois.goverlay"
+    flatpak "io.github.cboxdoerfer.FSearch"
+    flatpak "io.github.debasish_patra_1987.linuxthemestore"
+    flatpak "io.github.dummerle.rare"
+    flatpak "io.github.efogdev.mpris-timer"
+    flatpak "io.github.flattool.Ignition"
+    flatpak "io.github.flattool.Warehouse"
+    flatpak "io.github.gaheldev.Millisecond"
+    flatpak "io.github.nokse22.minitext"
+    flatpak "io.github.radiolamp.mangojuice"
+    flatpak "io.github.rfrench3.scopebuddy-gui"
+    flatpak "io.github.screwys.Rufin"
+    flatpak "io.github.tfuxu.Halftone"
+    flatpak "io.github.tobagin.keysmith"
+    flatpak "io.github.vikdevelop.SaveDesktop"
+    flatpak "io.github.voidforce.qsprawl"
+    flatpak "io.gitlab.liferooter.TextPieces"
+    flatpak "io.gitlab.news_flash.NewsFlash"
+    flatpak "io.mpv.Mpv"
+    flatpak "it.mijorus.gearlever"
+    flatpak "me.amankhanna.opendeck"
+    flatpak "net.ankiweb.Anki"
+    flatpak "net.pixieditor.PixiEditor"
+    flatpak "net.sourceforge.ddrescueview"
+    flatpak "nl.jknaapen.fladder"
+    flatpak "no.bragefuglseth.Keypunch"
+    flatpak "org.equicord.equibop"
+    flatpak "org.feichtmeier.Musicpod"
+    flatpak "org.gnome.Boxes"
+    flatpak "org.gnome.Brasero"
+    flatpak "org.gnome.Mines"
+    flatpak "org.gnome.Podcasts"
+    flatpak "org.gnome.Reversi"
+    flatpak "org.gnome.clocks"
+    flatpak "org.gnome.gitlab.cheywood.Buffer"
+    flatpak "org.jeffvli.feishin"
+    flatpak "org.jellyfin.JellyfinDesktop"
+    flatpak "org.kde.filelight"
+    flatpak "org.kde.gwenview"
+    flatpak "org.kde.haruna"
+    flatpak "org.kde.kasts"
+    flatpak "org.kde.kcalc"
+    flatpak "org.kde.kolourpaint"
+    flatpak "org.kde.okular"
+    flatpak "org.libreoffice.LibreOffice"
+    flatpak "org.localsend.localsend_app"
+    flatpak "org.nicotine_plus.Nicotine"
+    flatpak "org.openrgb.OpenRGB"
+    flatpak "org.pipewire.Helvum"
+    flatpak "org.prismlauncher.PrismLauncher"
+    flatpak "org.qbittorrent.qBittorrent"
+    flatpak "org.rncbc.qpwgraph"
+    flatpak "org.signal.Signal"
+    flatpak "org.torproject.torbrowser-launcher"
+    flatpak "org.virt_manager.virt-manager"
+    flatpak "page.codeberg.JakobDev.jdNBTExplorer"
+    flatpak "re.fossplant.songrec"
 
-    if ! $(brew unlink ffmpeg svt-av1 ffms2); then
-      echo "continuing anyway :)" ; fi
-  brew link --overwrite svt-av1-essential-lib ffmpeg-custom ffms2-custom svt-av1-essential
+    flatpak "chat.stoat.StoatDesktop", remote: "stoatdesktop-origin"
+    flatpak "io.github.ebkr.r2modman", remote: "r2builds", url: "https://r2builds.ebkr.dev/flatpak/r2modman.flatpakrepo"
+  FLATPAK
+  fi
 
 # Finish setting up yggdrasil network
-setup-yggdrasil:
+enable-yggdrasil:
   #!/usr/bin/bash
-  sudo groupadd --system yggdrasil
+  # sudo groupadd --system yggdrasil
   systemctl start yggdrasil-default-config.service
   systemctl enable yggdrasil.service
   systemctl start yggdrasil.service
@@ -139,137 +270,6 @@ setup-personal-environment-variables:
 
   XDG_CONFIG_HOME="$HOME/.config"
   CONFIG
-
-# setup udev 8bitdo / soomfon
-setup-personal-udev-rules:
-  #!/usr/bin/bash
-
-  # https://github.com/fabiscafe/game-devices-udev
-  echo "/etc/udev/rules.d/8bitdo-gdu.rules"
-  sudo dd of="/etc/udev/rules.d/8bitdo-gdu.rules" << 8BITDO
-  # 8BitDo Generic Device
-  ## This rule applies to many 8BitDo devices.
-  ACTION!="remove", SUBSYSTEM=="usb", ATTR{idProduct}=="3106", ATTR{idVendor}=="2dc8", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo F30 P1
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo FC30 GamePad", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo F30 P2
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo FC30 II", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo N30
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo NES30 GamePad", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo SF30
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo SFC30 GamePad", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo SN30
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo SNES30 GamePad", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo F30 Pro
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo FC30 Pro", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo N30 Pro
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo NES30 Pro", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo SF30 Pro
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo SF30 Pro", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo SN30 Pro
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo SN30 Pro", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo SN30 Pro+; Bluetooth; USB
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8BitDo SN30 Pro+", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo SF30 Pro   8BitDo SN30 Pro+", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo F30 Arcade
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo Joy", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo N30 Arcade
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo NES30 Arcade", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo ZERO
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo Zero GamePad", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo Retro-Bit xRB8-64
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8Bitdo N64 GamePad", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo Pro 2; Bluetooth; USB
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8BitDo Pro 2", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  ACTION!="remove", SUBSYSTEM=="input", ATTR{id/vendor}=="2dc8", ATTR{id/product}=="6006", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  ACTION!="remove", SUBSYSTEM=="input", ATTR{id/vendor}=="2dc8", ATTR{id/product}=="6003", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo Pro 2 Wired; USB
-  # X-mode uses the 8BitDo Generic Device rule
-  # B-Mode
-  ACTION!="remove", SUBSYSTEM=="usb", ATTR{idProduct}=="3010", ATTR{idVendor}=="2dc8", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  ACTION!="remove", SUBSYSTEMS=="input", ATTRS{id/product}=="3010", ATTRS{id/vendor}=="2dc8", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo Pro 3; Bluetooth; USB/2.4Ghz
-  # D-Mode
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8BitDo Pro 3", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  ACTION!="remove", SUBSYSTEM=="input", ATTR{id/vendor}=="2dc8", ATTR{id/product}=="6009", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo Ultimate Wired Controller for Xbox; USB
-  ACTION!="remove", SUBSYSTEM=="usb", ATTR{idProduct}=="2003", ATTR{idVendor}=="2dc8", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo Ultimate 2.4G Wireless  Controller; USB/2.4GHz
-  # X-mode uses the 8BitDo Generic Device rule
-  # D-mode
-  ACTION!="remove", SUBSYSTEM=="usb", ATTR{idProduct}=="3012", ATTR{idVendor}=="2dc8", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo Ultimate 2C Wireless Controller; USB/2.4GHz
-  ACTION!="remove", SUBSYSTEM=="usb", ATTR{idProduct}=="310a", ATTR{idVendor}=="2dc8", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo Arcade Stick; Bluetooth (X-mode)
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8BitDo Arcade Stick", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  
-  # 8BitDo Ultimate 2 Wireless; Bluetooth; USB/2.4GHz
-  ACTION!="remove", SUBSYSTEM=="input", ATTRS{name}=="8BitDo Ultimate 2 Wireless", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  ACTION!="remove", SUBSYSTEM=="usb", ATTR{idProduct}=="310b", ATTR{idVendor}=="2dc8", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-  8BITDO
-
-
-  # https://github.com/4ndv/opendeck-akp153
-  echo ""
-  echo "/etc/udev/rules.d/40-opendeck-akp153.rules"
-  sudo dd of="/etc/udev/rules.d/40-opendeck-akp153.rules" << OPENDECK
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="6603", ATTRS{idProduct}=="1014", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="6603", ATTRS{idProduct}=="1005", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="5548", ATTRS{idProduct}=="6670", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="5548", ATTRS{idProduct}=="6674", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0300", ATTRS{idProduct}=="1010", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0300", ATTRS{idProduct}=="1020", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0300", ATTRS{idProduct}=="3010", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0300", ATTRS{idProduct}=="3011", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0b00", ATTRS{idProduct}=="1000", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0c00", ATTRS{idProduct}=="1000", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0a00", ATTRS{idProduct}=="1001", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0500", ATTRS{idProduct}=="1001", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="1500", ATTRS{idProduct}=="3003", MODE="0660", TAG+="uaccess"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0600", ATTRS{idProduct}=="1000", MODE="0660", TAG+="uaccess"
-  
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="6603", ATTRS{idProduct}=="1014", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="6603", ATTRS{idProduct}=="1005", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="5548", ATTRS{idProduct}=="6670", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="5548", ATTRS{idProduct}=="6674", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0300", ATTRS{idProduct}=="1010", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0300", ATTRS{idProduct}=="1020", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0300", ATTRS{idProduct}=="3010", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0300", ATTRS{idProduct}=="3011", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0b00", ATTRS{idProduct}=="1000", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0c00", ATTRS{idProduct}=="1000", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0a00", ATTRS{idProduct}=="1001", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0500", ATTRS{idProduct}=="1001", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1500", ATTRS{idProduct}=="3003", MODE="0660", TAG+="uaccess"
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0600", ATTRS{idProduct}=="1000", MODE="0660", TAG+="uaccess"
-  OPENDECK
-
-  echo ""
-  echo "Reloading udev rules"
-  sudo udevadm control --reload-rules
-  sudo udevadm trigger
-  echo "Done"
 
 # install fixed fluent-round  # https://github.com/vinceliuice/Fluent-kde/issues/56
 install-fixed-fluent-round:
