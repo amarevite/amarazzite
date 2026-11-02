@@ -30,6 +30,7 @@ RUN dnf5 -y install git
 
 WORKDIR /rules
 RUN git clone https://github.com/4ndv/opendeck-akp153.git
+RUN git clone https://github.com/ambiso/opendeck-akp05.git
 RUN git clone https://codeberg.org/fabiscafe/game-devices-udev.git
 
 WORKDIR /rules/game-devices-udev/src
@@ -65,6 +66,7 @@ COPY just_files/ /
 
 # Copy udev rules from prepare-udev-rules stage
 COPY --from=prepare-udev-rules /rules/opendeck-akp153/40-opendeck-akp153.rules /usr/lib/udev/rules.d/
+COPY --from=prepare-udev-rules /rules/opendeck-akp05/40-opendeck-akp05.rules /usr/lib/udev/rules.d/
 COPY --from=prepare-udev-rules /rules/game-devices-udev/src/*.rules /usr/lib/udev/rules.d/
 
 # Add my own Justfile
