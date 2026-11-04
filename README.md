@@ -28,19 +28,18 @@ This is my custom Bazzite build.
 [Justfile](just_files/usr/share/ublue-os/just/00-install-personal-defaults.just)
 ```diff
 + install-kde-material-you-colors       # install kde-material-you-colors and pywal16 in userspace (https://github.com/luisbocanegra/kde-material-you-colors)
-+ install-personal-defaults             # install various programs (via brew)
-+ install-svt-av1-essential             # replace ffmpeg/svtav1 with an optimized version (via brew)
++ setup-personal-defaults               # install various programs (via brew)
 + setup-yggdrasil                       # add self to yggdrasil group, enable/start yggdrasil service
 + setup-maia-nfs                        # attach to network storage
 + setup-games-please                    # mount games drive
 + fix-user-flatpak-overrides            # match flatpak --user global overrides to the --system global overrides
 + setup-personal-environment-variables  # setup my personal environment variables
-+ setup-personal-udev-rules:            # setup udev 8bitdo / soomfon
 + install-fixed-fluent-round            # https://github.com/vinceliuice/Fluent-kde/issues/56
 ```
 
 [Containerfile](Containerfile)
 - build `kwin-effects-glass`
+- add udev rules
 - import `00-install-personal-defaults.just`
 
 
