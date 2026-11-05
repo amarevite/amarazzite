@@ -37,6 +37,7 @@ install-personal-defaults ACTION="":
     brew "fd"
     brew "ffmpeg"
     brew "ffms2"
+    brew "git-filter-repo"
     brew "hugo"
     brew "ideviceinstaller"
     brew "immich-go"
