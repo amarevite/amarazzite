@@ -58,6 +58,7 @@ install-personal-defaults ACTION="":
     brew "svt-av1"
     brew "tealdeer"
     brew "trash-cli"
+    brew "trivy"
     brew "ugrep"
     brew "video-compare"
     brew "xh"
