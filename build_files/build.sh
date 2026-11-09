@@ -2,6 +2,9 @@
 
 set -ouex pipefail
 
+# Copy the contents of system_files/ of the git repo to /
+cp -avf "/ctx/system_files"/. /
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.
@@ -11,11 +14,7 @@ set -ouex pipefail
 
 # Disable COPRs so they don't end up enabled on the final image
 
-# OS_VERSION=$(grep --perl-regexp --only-matching 'VERSION_ID=\K[\d]+' /etc/os-release)
-# OS_VERSION=$(rpm --eval '%fedora')
-# echo "OS_VERSION: $OS_VERSION"
-# 
-# dnf5 -y upgrade --refresh --releasever="$OS_VERSION"
+dnf5 -y makecache --refresh
 
 dnf5 config-manager setopt terra.enabled=1
 dnf5 -y install espanso-wayland

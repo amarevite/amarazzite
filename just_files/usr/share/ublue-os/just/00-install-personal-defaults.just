@@ -156,6 +156,7 @@ install-personal-defaults ACTION="":
 
     flatpak "chat.stoat.StoatDesktop", remote: "stoatdesktop-origin"
     flatpak "io.github.ebkr.r2modman", remote: "r2builds", url: "https://r2builds.ebkr.dev/flatpak/r2modman.flatpakrepo"
+    flatpak "io.github.Amethyst.ModManager", remote: "modmanager-origin", url: "https://chrisdkn.github.io/Amethyst-Mod-Manager/amethyst.flatpakrepo"
   FLATPAK
   fi
 

@@ -42,6 +42,7 @@ RUN for each in *.rules; \
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
 COPY build_files /
+COPY system_files /system_files
 
 # Copy Glass effect from build-glass stage
 COPY --from=build-glass /glass/kwin-effects-glass/build/kwin-glass.rpm /kwin-glass.rpm
