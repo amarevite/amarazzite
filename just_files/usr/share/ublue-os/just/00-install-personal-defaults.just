@@ -50,6 +50,7 @@ install-personal-defaults ACTION="":
     brew "pandoc"
     brew "podlet"
     brew "podman-compose"
+    brew "ratarmount"
     brew "ripgrep"
     brew "ripgrep-all"
     brew "rustscan"
