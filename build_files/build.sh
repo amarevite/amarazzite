@@ -40,8 +40,6 @@ dnf5 -y install kvantum
 dnf5 -y install ptyxis
 dnf5 -y remove konsole
 
-dnf5 -y remove xwaylandvideobridge
-
 
 #### Preparation
 systemctl enable podman.socket
