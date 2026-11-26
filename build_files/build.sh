@@ -52,8 +52,6 @@ setcap "cap_dac_override+p" "$(which espanso)"
 # fix intel compute runtime https://github.com/intel/compute-runtime/issues/922#issuecomment-4675326568
 ldconfig
 
-mkdir --mode 0755 /nix
-
 
 ### Cleanup to remove `bootc container lint` warnings
 # cleanup transient files in /run and /var from installing packages
