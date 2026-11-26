@@ -40,7 +40,8 @@ dnf5 -y install kvantum
 dnf5 -y install ptyxis
 dnf5 -y remove konsole
 
-dnf5 -y remove xwaylandvideobridge
+# dnf5 -y remove xwaylandvideobridge
+dnf5 -y install nix
 
 
 #### Preparation
@@ -62,3 +63,6 @@ rm --recursive --force /var/lib/dnf
 # bootc linter explicitly looks for a group definition, but it's only implied by ta user definition.
 # explicitly set a group definition to satisfy the linter. systemd-sysusers is handling everything anyway
 echo 'g yggdrasil - -' >> /usr/lib/sysusers.d/yggdrasil.conf
+
+# add puid 1000 to nix allowed-users (not sure if puid works or only username string)
+echo 'allowed-users = 1000' >> /etc/nix/nix.conf

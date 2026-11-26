@@ -22,7 +22,7 @@ This is my custom Bazzite build.
 + espanso-wayland
 + yggdrasil
 + earlyoom
-- xwaylandvideobridge
++ nix
 ```
 
 [Justfile](just_files/usr/share/ublue-os/just/00-install-personal-defaults.just)
